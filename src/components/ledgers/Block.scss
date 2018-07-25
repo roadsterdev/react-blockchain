@@ -1,13 +1,9 @@
-.block-container {
-    display: flex;
-    margin-left: .5rem;
-    margin-right: -1.5rem;
-}
 
 .block {
     background: white;
     margin-top: .5rem;
-    margin-right: 2rem;
+    margin-right:auto;
+    margin-left:auto;
     display: flex;
     justify-content: center;
     width: 4rem;
@@ -41,5 +37,7 @@
     color: #F99243;
     font-size: .8rem;
     margin-top: 0.4rem;
-    margin-right: 2rem;
+    margin-right: auto;
+    margin-left:auto;
+
 }

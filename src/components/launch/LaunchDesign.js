@@ -42,6 +42,9 @@ class LaunchDesign extends Component {
                 <div className="square-shape-two">
                     <img src={DiamondPink} className="star-shape-design square-pink"/>
                 </div>
+                <div> 
+                   <img src={StarShape} className="star-small-right"/>
+                </div>
                 <div>
                     <img src={CircleShape} className="circle-opaque"/>
                 </div> 

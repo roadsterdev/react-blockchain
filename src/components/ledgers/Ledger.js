@@ -104,7 +104,7 @@ class Ledger extends Component{
             }
 
         } else {
-            return(<div className="ledger-container"> NO BLOCKS </div>); //todo change me
+            return(<div className="ledger-container no-block-text"> NO BLOCKS </div>); //todo change me
         }
     }
 }
