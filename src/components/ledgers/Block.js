@@ -15,9 +15,6 @@ class Block extends Component {
         this.setState({
             visible:true
         })
-        //TODO: show popop with this data
-        // console.log("block");
-        // console.log(block);
     }
 
     cancelOut() {
@@ -29,10 +26,9 @@ class Block extends Component {
     render() {
         let text = "{...}";
         let blockNumber = "Block " + this.props.block[0].blockNumber;
-
         return(
                 <div>
-                    <BlockPopup visible={this.state.visible} cancel={this.cancelOut.bind(this)} blockInfo={this.props.block}/>
+                    <BlockPopup visible={this.state.visible} cancel={this.cancelOut.bind(this)} blockInfo={this.props.block} addresses={this.props.addresses}/>
                     <button className="block" onClick={this.onBlockClick.bind(this, this.props.block)}>
                         <h2 className="block-text">{text}</h2>
                     </button>
