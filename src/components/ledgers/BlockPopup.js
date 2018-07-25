@@ -6,13 +6,12 @@ const TRANSFER = "Transfer";
 const ISSUE = "IssueKard";
 
 class BlockPopup extends Component {
-    
+
     blockText() {
         let block = this.props.blockInfo;
         let addresses = this.props.addresses;
         return block.map((item) => {
             console.log(item);
-            let blockHash = item.blockHash;
             let eventValues = item.returnValues;
             let eventType = "Type: " + item.event;
             let kardId = "Kard ID: " + eventValues.kardId;
@@ -41,12 +40,12 @@ class BlockPopup extends Component {
     }
     render() {
         let blockNumber = this.props.blockInfo[0].blockNumber;
+        let blockHash = this.props.blockInfo[0].blockHash;
         let headerText = "Block #" + blockNumber;
         let kaleidoInfo = this.props.kaleidoInfo;
         let explorerLink = ".kaleido.io/block/" + blockNumber + "?consortia=" + kaleidoInfo.consortia + "&environment=" + kaleidoInfo.environment;
         let prefix = "https://explorer" + (kaleidoInfo.locale ? "-" + kaleidoInfo.locale : "");
         explorerLink = prefix + explorerLink;
-        console.log(explorerLink);
         if(this.props.visible) {
         return(
             <div className="overlay">
@@ -55,6 +54,7 @@ class BlockPopup extends Component {
                 <div className="block-info-text">
                     <h2>{headerText}</h2>
                     <a target="_blank" href={explorerLink}>View in Kaleido Explorer</a>
+                    <p>{blockHash}</p>
                     {this.blockText()}
                 </div>
 
