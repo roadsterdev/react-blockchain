@@ -41,7 +41,7 @@ class Card extends Component {
 
         const color= ["#202CE0", "#F99243", "#51C2FA", "#EE34A8", "#00CD79"];
         const shapes = ['circle','square','diamond','triangle','star'];
-        const effects = ['fade-effect'];
+        const effects = ['fade-effect', 'flashing-effect', 'pulsing-effect','shaking-effect', 'wobbling-effect'];
 
 
 
@@ -60,7 +60,7 @@ class Card extends Component {
         return (
                 <div className="card" style={styles}>
 
-                    <div className={`${shapes[parseInt(shape)]} ${effect ? 'fade-effect': null}`}></div>
+                    <div className={`${shapes[parseInt(shape)]} ${effect ? effects[parseInt(effect)]: null}`}></div>
                 </div>
         )
     }

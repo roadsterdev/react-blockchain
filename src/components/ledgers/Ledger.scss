@@ -5,22 +5,41 @@
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    display:flex;
+    justify-content:space-evenly;
 }
 
 .arrow-right{
     width: 3rem;
     height: 3rem;
-    position: absolute;
-    top: 29rem;
-    right: 3rem;
-    left: 27.3rem;
+   
 }
 
 .arrow-left{
     width: 3rem;
     height: 3rem;
-    position: absolute;
-    top: 29rem;
-    right: 68rem;
-    left: 7rem;
+}
+
+.arrow-right-button {
+    border:none;
+    background-color: transparent;
+    margin-top: -1rem;
+    &:hover{
+        cursor:pointer;
+    }
+    &:focus{
+        outline:none;
+    }
+}
+
+.arrow-left-button {
+    border:none;
+    background-color: transparent;
+    margin-top: -1rem;
+    &:hover{
+        cursor:pointer;
+    }
+    &:focus{
+        outline:none;
+    }
 }

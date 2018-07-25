@@ -8,9 +8,13 @@ class Ledger extends Component{
     render() {
         return(
             <div className="ledger-container">
-            {/* <img src={ArrowLeftImg} className="arrow-left"/> */}
+            <button className="arrow-left-button">
+                <img src={ArrowLeftImg} className="arrow-left"/>
+            </button>
               <Block/>
-            {/* <img src={ArrowImg} className="arrow-right"/> */}
+            <button className="arrow-right-button">
+                <img src={ArrowImg} className="arrow-right"/>
+            </button>
             </div>
 
         )
