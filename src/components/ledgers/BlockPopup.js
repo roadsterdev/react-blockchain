@@ -22,11 +22,11 @@ class BlockPopup extends Component {
                 let from = "From: " + addresses[eventValues.from];
                 let to = "To: " + addresses[eventValues.to];
 
-                eventInfo = <div><p>{txHash}</p><p>{eventType}</p><p>{kardId}</p><p>{from}</p><p>{to}</p></div>
+                eventInfo = <div><p className="event-text">{txHash}</p><p className="event-text">{eventType}</p><p className="event-text">{kardId}</p><p className="event-text">{from}</p><p className="event-text">{to}</p></div>
             } else if (item.event === ISSUE) {
                 let owner = "Issued To: " + addresses[eventValues.owner]; //TODO: swap with name
 
-                eventInfo = <div><p>{txHash}</p><p>{eventType}</p><p>{kardId}</p><p>{owner}</p></div>
+                eventInfo = <div><p className="event-text">{txHash}</p><p className="event-text">{eventType}</p><p className="event-text">{kardId}</p><p className="event-text">{owner}</p></div>
             } else {
                 console.log(eventType);
             }
