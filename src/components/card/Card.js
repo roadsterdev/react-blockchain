@@ -38,49 +38,11 @@ class Card extends Component {
 
    renderCard() {
 
-    const circle = {
-        backgroundColor: 'white',
-        width: '2rem',
-        height: '2rem',
-        borderRadius: '50%'
-        }
-    
-    const triangle = {
-        color: 'transparent',
-        width: '0',
-        height: '0',
-        borderRight: '1rem solid transparent',
-        borderLeft: '1rem solid transparent',
-        borderBottom: '2rem solid white'
-    }
 
-    const square = {
-        backgroundColor: 'white',
-        width: '2rem',
-        height: '2rem'
-    }
+        const color= ["#202CE0", "#F99243", "#51C2FA", "#EE34A8", "#00CD79"];
+        const shapes = ['circle','square','diamond','triangle','star'];
+        const effects = ['fade-effect'];
 
-    const star =
-    {
-        backgroundImage: `url(${Star})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '12rem',
-        height: '12rem'
-        
-    }
-
-    const diamond = {
-        backgroundImage: `url(${Diamond})`,
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '12rem',
-        height: '12rem'
-    }
-
-        const color= ["#202CE0", "#51C2FA", "#F99243", "#EE34A8", "#00CD79"];
-        const shapes = [circle, triangle, star, square, diamond];
-        // const effect = [sparkle]
 
 
     
@@ -91,10 +53,14 @@ class Card extends Component {
         backgroundColor: color[this.props.color],
         marginBottom: '20px'
         };
-    
+
+        const { effect, shape} = this.props;
+        if(!shape || !this.props.color) return null;
+   
         return (
                 <div className="card" style={styles}>
-                    <div style= {shapes[this.props.shape]}></div>
+
+                    <div className={`${shapes[parseInt(shape)]} ${effect ? 'fade-effect': null}`}></div>
                 </div>
         )
     }

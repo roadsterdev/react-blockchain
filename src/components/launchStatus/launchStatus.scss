@@ -34,6 +34,7 @@
   position: absolute;
   top: 10rem;
   right: 37rem;
+  left: 30rem;
 }
 
 .kaleido-loading {
@@ -49,7 +50,10 @@
 }
 
 %contract {
-  background-position: -255px 3px;
+  position: absolute;
+  top: 10rem;
+  right: 37rem;
+  left: 30rem;
 }
 
 .contract-loading {
@@ -65,7 +69,10 @@
 }
 
 %status {
-  background-position: -501px 3px;
+  position: absolute;
+  top: 10rem;
+  right: 37rem;
+  left: 30rem;
 }
 
 .status-loading {

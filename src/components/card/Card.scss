@@ -1,6 +1,120 @@
 @import './../styles/colors.scss';
 
 
+
+.circle {
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+ }
+
+ .triangle{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+ }
+
+
+ .square{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+ }
+
+ .star{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+ }
+
+ .diamond{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+ }
+
+.diamond .fade-effect{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+}
+
+.star .fade-effect{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+}
+
+.square .fade-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+ .triangle .fade-effect{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+ .circle .fade-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+
+.fade-effect {
+   animation: glitter 4.5s linear 0s infinite normal;
+}
+
+// .launch-effect {
+//     animation: colorChange 20s infinite alternate;
+
+// }
+
+// .card .launch-effect {
+//     width: 6rem;
+//     height: 8rem;
+//     border-radius: 12px;
+//     display: flex;
+//     justify-content: center;
+//     align-items:center;
+//     background: transparent;
+//     margin-right: .5rem;
+//     animation: colorChange 20s infinite alternate;
+
+//     &:hover {
+//         transform: scale(1.1);
+//         cursor: pointer;
+//     }
+
+// }
+
+
 *, 
 *::after,
 *::before {
@@ -30,3 +144,21 @@
 
 
 
+
+@keyframes colorChange {
+    0% {
+       background-color: #202CE0
+    }
+    25% {
+       background-color: #F99243
+    }
+    50% {
+      background-color: #51C2FA;
+    }
+    75% {
+        background-color: #EE34A8;
+    }
+    100% {
+      background-color: #00CD79;
+    }
+}

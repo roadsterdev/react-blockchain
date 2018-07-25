@@ -91,6 +91,9 @@ my-cards-title {
 }
 
 .middle-white-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     background: white;
     border-right: 3rem solid #202CE0;
     border-left: 3rem solid #202CE0;
@@ -100,4 +103,18 @@ my-cards-title {
     margin-left: auto;
     margin-top: -11rem;
     margin-bottom: 1rem;
+}
+
+.my-ledger{
+    margin-left: auto;
+}
+.joe-ledger{
+    margin-right: auto;
+}
+
+.the-ether-count {
+    display: flex;
+    flex-direction: column;
+    margin-right: 9rem;
+    margin-left: 9rem;
 }

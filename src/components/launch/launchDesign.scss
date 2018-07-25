@@ -66,6 +66,45 @@
     left: -1rem;
 }
 
+.circle-opaque {
+    position:absolute;
+    top: 4rem;
+    left: 58rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.circle-green {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 7rem;
+    left: 57rem;
+    right: 1rem;
+}
+
+.circle-green-small {
+    position: absolute;
+    top: 16rem;
+    left: 70rem;
+    right:1rem;
+}
+
+.diamond-right {
+    position: absolute;
+    top: 20rem;
+    left: 61rem;
+    right:2rem;
+    animation: glitter 10s linear 0s infinite normal;
+}
+
+.small {
+    width: 2rem;
+    height:2rem;
+    animation: glitter 10s linear 0s infinite normal;
+}
+
 .circle-shape-two {
     position: absolute;
     top: 36rem;
@@ -97,12 +136,13 @@
 
 .square-shape-five {
     opacity: .4;
-    margin-left:-3rem;
-    width:2rem;
-    height:2rem;
+    margin-left: -3rem;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
-    top: 40rem;
-    left: 12rem;
+    top: 35rem;
+    left: 7rem;
+    right: 1rem;
 }
 
 .square-shape-four {

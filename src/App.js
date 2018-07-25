@@ -11,10 +11,15 @@ import { DragDropContext } from 'react-dnd';
 import ProposePopup from './components/modal/proposeTradePopUp';
 import Checkmark from './components/loader/Checkmark';
 import Dashboard from './components/dashboardPopUP/Dashboard';
+import Ledger from './components/ledgers/Ledger';
 
 const userGetKards = `/kards/user`;
 const joeGetKards = `/kards/joe`;
 const getBalance = `/balance/user`; // joe balance should always be the same as the user's
+
+const position= {
+    left:'52rem'
+}
 
 class App extends Component {
     constructor(props) {
@@ -132,9 +137,18 @@ class App extends Component {
               </div>
             </div>
             <div className="middle-white-container">
-                <div className="ether-left">{this.state.ether}</div>
-                <h3 className="ether-text"> Ξ </h3>
+                <div className="my-ledger">
+                    <Ledger/>
+                </div>
 
+                <div className="the-ether-count">
+                <div className="ether-left">{this.state.ether}</div>
+                <h3 className="ether-text"> Ether </h3>
+                </div>
+
+                <div className="joe-ledger">
+                    <Ledger/>
+                </div>
             </div>
             <Checkmark/>
             <Footer refreshKards={this.refreshKards.bind(this)}/>

@@ -10,6 +10,7 @@ import SquareOrange from './SquareOrange.png';
 import TrianglePink from './TrianglePink.png';
 import SquareGreen from './SquareGreen.png';
 import DiamondPink from './DiamondPink.png';
+import CircleGreen from './CircleGreen.png';
 
 class LaunchDesign extends Component {
 
@@ -29,6 +30,13 @@ class LaunchDesign extends Component {
                     <img src={DiamondPink} className="star-shape-design square-pink"/>
                 </div>
                 <div>
+                    <img src={CircleShape} className="circle-opaque"/>
+                </div> 
+                
+                <div>
+                    <img src={CircleGreen} className="circle-green"/>
+                </div> 
+                <div>
                     <img src={CircleShape} className="circle-shape-three"/>
                 </div>  
                 <div className="star-two"> 
@@ -37,6 +45,12 @@ class LaunchDesign extends Component {
                 <div className="star-three"> 
                    <img src={StarShape}/>
                 </div>
+                <div>
+                    <img src={CircleGreen} className="circle-green small circle-green-small"/>
+                </div> 
+                <div>
+                    <img src={DiamondShape} className="diamond-right"/>
+                </div> 
                 <div className="square-shape"> 
                     <img src={SquareShape} className="square-shape-one"/>
                 </div>
@@ -72,6 +86,10 @@ class LaunchDesign extends Component {
                 <div className="square-five"> 
                     <img src={SquareShape} className="square-shape-five"/>
                 </div>
+
+
+
+                
 
 
             </div>
