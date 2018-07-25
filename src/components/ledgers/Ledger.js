@@ -78,9 +78,9 @@ class Ledger extends Component{
                     <button className="arrow-left-button" onClick={this.scrollLeft.bind(this)}>
                         <img src={ArrowLeftImg} className="arrow-left"/>
                     </button>
-                        <Block block={firstBlock} addresses={this.props.ledger.addresses}/>
-                        <Block block={secondBlock} addresses={this.props.ledger.addresses}/>
-                        <Block block={thirdBlock} addresses={this.props.ledger.addresses}/>
+                        <Block block={firstBlock} addresses={this.props.ledger.addresses} kaleidoInfo={this.props.ledger.kaleidoInfo}/>
+                        <Block block={secondBlock} addresses={this.props.ledger.addresses} kaleidoInfo={this.props.ledger.kaleidoInfo}/>
+                        <Block block={thirdBlock} addresses={this.props.ledger.addresses} kaleidoInfo={this.props.ledger.kaleidoInfo}/>
                     <button className="arrow-right-button" onClick={this.scrollRight.bind(this)}>
                         <img src={ArrowImg} className="arrow-right"/>
                     </button>
@@ -95,8 +95,8 @@ class Ledger extends Component{
                     <img src={ArrowLeftImg} className="arrow-left"/>
                 </button>
 
-                    {this.props.ledger.blocks[0] ? <Block block={this.props.ledger.blocks[0]} addresses={this.props.ledger.addresses}/> : null}
-                    {this.props.ledger.blocks[1] ? <Block block={this.props.ledger.blocks[1]} addresses={this.props.ledger.addresses}/> : null}
+                    {this.props.ledger.blocks[0] ? <Block block={this.props.ledger.blocks[0]} kaleidoInfo={this.props.ledger.kaleidoInfo} addresses={this.props.ledger.addresses}/> : null}
+                    {this.props.ledger.blocks[1] ? <Block block={this.props.ledger.blocks[1]} kaleidoInfo={this.props.ledger.kaleidoInfo} addresses={this.props.ledger.addresses}/> : null}
                 <button className="arrow-right-button">
                     <img src={ArrowImg} className="arrow-right"/>
                 </button>

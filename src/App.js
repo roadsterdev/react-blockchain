@@ -98,6 +98,11 @@ class App extends Component {
                 }
                 formattedLedger.blocks[indexCounter].push(element);
             });
+            let kaleidoInfo = {};
+            kaleidoInfo.consortia = this.props.location.state.consortia;
+            kaleidoInfo.environment = this.props.location.state.environment;
+            kaleidoInfo.locale = this.props.location.state.locale;
+            formattedLedger.kaleidoInfo = kaleidoInfo;
         }
 
         return formattedLedger;
