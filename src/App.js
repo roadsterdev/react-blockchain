@@ -192,7 +192,7 @@ class App extends Component {
             </div>
             <div className="middle-white-container">
                 <div className="my-ledger">
-                    <Ledger/>
+                    <Ledger ledger={this.state.myLedger}/>
                 </div>
 
                 <div className="the-ether-count">
@@ -201,7 +201,7 @@ class App extends Component {
                 </div>
 
                 <div className="joe-ledger">
-                    <Ledger/>
+                    <Ledger ledger={this.state.joeLedger}/>
                 </div>
             </div>
             <Checkmark/>
