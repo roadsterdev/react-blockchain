@@ -28,7 +28,11 @@ class Block extends Component {
         let blockNumber = "Block " + this.props.block[0].blockNumber;
         return(
                 <div>
-                    <BlockPopup visible={this.state.visible} cancel={this.cancelOut.bind(this)} blockInfo={this.props.block} addresses={this.props.addresses}/>
+                    <BlockPopup visible={this.state.visible}
+                                cancel={this.cancelOut.bind(this)}
+                                blockInfo={this.props.block}
+                                addresses={this.props.addresses}
+                                kaleidoInfo={this.props.kaleidoInfo}/>
                     <button className="block" onClick={this.onBlockClick.bind(this, this.props.block)}>
                         <h2 className="block-text">{text}</h2>
                     </button>
