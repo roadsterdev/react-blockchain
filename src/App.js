@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './components/header/Header';
 import './components/card/Card.scss';
 import './components/styles/text.scss';
 import './App.scss';
@@ -17,9 +16,9 @@ const userGetKards = `/kards/user`;
 const joeGetKards = `/kards/joe`;
 const getBalance = `/balance/user`; // joe balance should always be the same as the user's
 
-const position= {
-    left:'52rem'
-}
+// History endpoints. /user vs /joe determines which node to talk to
+const userLedgerHistory = "/history/all/user";
+const joeLedgerHistory = "history/all/joe";
 
 class App extends Component {
     constructor(props) {
@@ -30,7 +29,9 @@ class App extends Component {
             myProposedCard: [],
             joeProposedCard:[],
             ether: '',
-            visible: true
+            visible: true,
+            myLedger: {},
+            joeLedger: {},
         };
         this.refreshKards();
     }
@@ -72,6 +73,57 @@ class App extends Component {
 
     }
 
+    // Formats the ledger event data into a more usable format
+    formatLedger(ledger) {
+        let formattedLedger = {};
+        if (ledger && ledger.events) {
+            formattedLedger[ledger.joeAddress] = "Joe";
+            formattedLedger[ledger.userAddress] = "Me"; //TODO: determine Me vs You text
+            formattedLedger.blocks = [];
+            let indexCounter = -1;
+            let currentBlockNumber = -1;
+            ledger.events.forEach((element) => {
+                if (element.blockNumber !== currentBlockNumber) {
+                    currentBlockNumber = element.blockNumber;
+                    indexCounter++;
+                }
+                // For each returned event, we want to sort them by block number
+                // If this is the first event in this block, let create a new array
+                // otherwise just push the event into the array
+                if (!formattedLedger.blocks[indexCounter]) {
+                    formattedLedger.blocks[indexCounter] = [];
+                }
+                formattedLedger.blocks[indexCounter].push(element);
+            });
+        }
+
+        return formattedLedger;
+    }
+
+    refreshLedgers() {
+        window.fetch( userLedgerHistory, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(results => {
+            return results.json();
+        }).then(resultBody => {
+            this.setState({myLedger: this.formatLedger(resultBody)});
+        });
+
+        window.fetch( joeLedgerHistory, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(results => {
+            return results.json();
+        }).then(resultBody => {
+            this.setState({joeLedger: this.formatLedger(resultBody)});
+        });
+    }
+
     refreshKards() {
         window.fetch( userGetKards, {
             method: "GET",
@@ -82,6 +134,7 @@ class App extends Component {
             return results.json();
         }).then(resultBody => {
             this.setState({myKards: resultBody});
+            this.refreshLedgers();
         });
 
         window.fetch( joeGetKards, {
@@ -93,6 +146,7 @@ class App extends Component {
             return results.json();
         }).then(resultBody => {
             this.setState({joeKards: resultBody});
+            this.refreshLedgers()
         });
 
         window.fetch( getBalance, {
@@ -127,7 +181,7 @@ class App extends Component {
                     <ProposePopup 
                         myKards={this.state.myProposedCard} joeKards={this.state.joeProposedCard} refresh={this.refreshKards.bind(this)}
                         empty={this.emptyTradeCards.bind(this)}
-                        smartContractAddress={this.props.location.state.ContractAddress}
+                        smartContractAddress={this.props.location.state.contractAddress}
                     />
                 </div>
                   <div className="other-players-cards">
