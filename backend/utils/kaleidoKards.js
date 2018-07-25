@@ -258,10 +258,12 @@ class KaleidoKards {
                     response.events = events;
                     // if there is history then we need to get the addresses so the
                     // frontend can map address to owner
+                    let addresses = {}
                     return this.getAddress('user_node').then((userAddress) => {
-                        response.userAddress = userAddress;
+                        addresses.userAddress = userAddress;
                         return this.getAddress('joe_node').then((joeAddress) => {
-                            response.joeAddress = joeAddress;
+                            addresses.joeAddress = joeAddress;
+                            response.addresses = addresses;
                             return response;
                         });
                     });

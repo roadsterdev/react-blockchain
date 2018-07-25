@@ -77,8 +77,11 @@ class App extends Component {
     formatLedger(ledger) {
         let formattedLedger = {};
         if (ledger && ledger.events) {
-            formattedLedger[ledger.joeAddress] = "Joe";
-            formattedLedger[ledger.userAddress] = "Me"; //TODO: determine Me vs You text
+            let addresses = {};
+            addresses[ledger.addresses.joeAddress] = "Joe";
+            addresses[ledger.addresses.userAddress] = "Me";
+
+            formattedLedger["addresses"] = addresses;
             formattedLedger.blocks = [];
             let indexCounter = -1;
             let currentBlockNumber = -1;
