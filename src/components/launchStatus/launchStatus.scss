@@ -12,12 +12,11 @@
 
 %launch-status-item {
   display: inline-block;
-  //width: 33.33333%;
-  background-size: 13rem 5rem;
+  background-size: 663px 246px;
   background-repeat: no-repeat;
   height: -webkit-fill-available;
-  height: 14rem;
-  width: 14rem;
+  height: 250px;
+  width: 213px;
 }
 
 %launch-status-item-loading {
@@ -30,11 +29,7 @@
 }
 
 %kaleido {
-  // background-position: 1px 3px;
-  position: absolute;
-  top: 11rem;
-  right: 37rem;
-  left: 34rem;
+  background-position: 1px 3px;
 }
 
 .kaleido-loading {
@@ -50,10 +45,7 @@
 }
 
 %contract {
-  position: absolute;
-  top: 11rem;
-  right: 37rem;
-  left: 34rem;
+  background-position: -255px 3px;
 }
 
 .contract-loading {
@@ -69,10 +61,7 @@
 }
 
 %status {
-  position: absolute;
-  top: 11rem;
-  right: 37rem;
-  left: 34rem;
+  background-position: -501px 3px;
 }
 
 .status-loading {
@@ -100,4 +89,5 @@
   width: 100%;
   position: absolute;
   padding: 1rem 0;
+  z-index: 9999;
 }
