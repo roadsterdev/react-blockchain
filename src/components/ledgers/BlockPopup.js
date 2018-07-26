@@ -11,7 +11,6 @@ class BlockPopup extends Component {
         let block = this.props.blockInfo;
         let addresses = this.props.addresses;
         return block.map((item) => {
-            console.log(item);
             let eventValues = item.returnValues;
             let eventType = "Type: " + item.event;
             let kardId = "Kard ID: " + eventValues.kardId;
