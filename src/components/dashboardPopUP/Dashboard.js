@@ -3,6 +3,7 @@ import './Dashboard.scss';
 import GotItBtn from './../buttons/GotItBtn';
 import PurchaseAction from './../actions/PurchaseAction';
 import TradeAction from './../actions/TradeAction';
+import CancelBtn from './../buttons/CancelBtn';
 class Dashboard extends Component {
     render() {
 
@@ -10,6 +11,7 @@ class Dashboard extends Component {
         return (
             <div className="overlay">
                 <div className="square-popup-container">
+                <CancelBtn/>
                 <h2 className="top-text"> Welcome to the KaleidoKards Trading Application</h2>
                         <div className="top-text-container">
                         <h2 className="informal-top">You will be communicating with a blockchain network that has been provisioned against your Kaleido Organization, and invoking a smart contract deployed in the environment. Your Ethereum User Account has been pre-funded with 100 Ether, with which you can acquire packs of Standard and/or Platinum cards by using the purchase button at the bottom of the screen.</h2>

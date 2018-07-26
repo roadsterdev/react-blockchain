@@ -20,8 +20,14 @@ class LaunchDesign extends Component {
           
         return (
             <div className="shapes"> 
-                <div className="star-shape-design"> 
+                <div> 
                    <img src={StarShape} className="star-shape-image"/>
+                </div>
+                <div>
+                    <img src={CircleShape} className="circle-white"/>
+                </div> 
+                <div> 
+                    <img src={SquareGreen} className="square-green-two"/>
                 </div>
                 <div>
                     <img src={CircleShape} className="circle-shape-right"/>
@@ -35,10 +41,10 @@ class LaunchDesign extends Component {
                 <div>
                     <img src={DiamondShape} className="diamond-right-three"/>
                 </div> 
-                <div className="square-two"> 
+                <div> 
                     <img src={SquareGreen} className="square-shape-two"/>
                 </div>
-                <div className="square-shape-two">
+                <div>
                     <img src={DiamondPink} className="star-shape-design square-pink"/>
                 </div>
                 <div> 
@@ -54,14 +60,20 @@ class LaunchDesign extends Component {
                 <div>
                     <img src={CircleGreen} className="circle-green"/>
                 </div> 
+                <div> 
+                    <img src={TrianglePink} className="triangle-pink-shape"/>
+                </div> 
                 <div>
                     <img src={CircleShape} className="circle-shape-three"/>
                 </div>  
-                <div className="star-two"> 
+                <div> 
                    <img src={StarShape} className="star-shape-two"/>
                 </div>
-                <div className="star-three"> 
-                   <img src={StarShape}/>
+                <div> 
+                   <img src={StarShape}  className="star-three"/>
+                </div>
+                <div> 
+                    <img src={SquareOrange} className="square-orange-color"/>
                 </div>
                 <div>
                     <img src={CircleGreen} className="circle-green small circle-green-small"/>
@@ -69,12 +81,12 @@ class LaunchDesign extends Component {
                 <div>
                     <img src={DiamondShape} className="diamond-right"/>
                 </div> 
-                <div className="square-shape"> 
+                <div> 
                     <img src={SquareShape} className="square-shape-one"/>
                 </div>
                 <div>
-                <div className="star-right"> 
-                   <img src={StarShape}/>
+                <div> 
+                   <img src={StarShape}  className="star-right"/>
                 </div>
                     <img src={CircleShape} className="circle-shape-four"/>
                 </div> 
@@ -92,7 +104,7 @@ class LaunchDesign extends Component {
                     <img src={CircleShape} className="circle-shape-one"/>
                 </div> 
 
-                <div className="diamond-shape">
+                <div>
                     <img src={DiamondShape} className="diamond-shape-one"/>
                 </div> 
 
