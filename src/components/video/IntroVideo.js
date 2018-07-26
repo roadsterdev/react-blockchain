@@ -21,7 +21,7 @@ class IntroVideo extends Component {
                 <div className="overlay" onClick={this.overlayClick.bind(this)}>
                     <div className="video-container">
                         <YouTube
-                            videoId="-3zsfeqO8no"
+                            videoId="X45Drshd_Ng"
                             opts={opts}
                             onEnd={this._onEnd.bind(this)}
                         />
