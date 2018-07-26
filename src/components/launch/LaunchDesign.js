@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './launchDesign.scss';
 import StarShape from './star.svg';
-import TriangleShape from './Triangle.svg';
 import CircleShape from './Circle.svg';
 import DiamondShape from './Diamond.svg';
 import SquareShape from './Square.svg';

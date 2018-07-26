@@ -54,7 +54,7 @@ class BlockPopup extends Component {
                 <div className="block-info-text">
                     <h2>{headerText}</h2>
                     <a target="_blank" href={explorerLink}>View in Kaleido Explorer</a>
-                    <p>{blockHash}</p>
+                    <p className="blockhash">{blockHash}</p>
                     {this.blockText()}
                 </div>
 

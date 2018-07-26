@@ -23,7 +23,6 @@ class Dashboard extends Component {
                     <TradeAction/>
                     <div className="informal-text-container">
                         <h2 className="informal-text-right">After purchasing, you have the ability to propose trades with Joe.  Drag a card from each user's collection and click the `Propose Trade` Button.</h2>
-                        {/* <h2 className="informal-text-right"> An accepted trade will invoke the transfer function in the smart contract.  A rejected trade will do nothing.</h2> */}
                         <h2 className="informal-text-right"> An accepted trade will invoke the transfer function in the smart contract and update the index to reflect the new owner's Ethereum account address.  A rejected trade is confined to the application and does not communicate with the blockchain network.</h2>
                         <h2 className="informal-text-right"> That's all there is to it!  Happy trading.</h2>
                     </div>

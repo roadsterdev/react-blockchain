@@ -92,11 +92,8 @@
 }
 
 .flashing-effect{
-    animation: flash 2s infinite normal;
+    animation: flash 10s infinite normal;
 
-}
-.pulsing-effect {
-    animation: pulse 2s infinite normal;
 }
 
 .shaking-effect{
@@ -195,51 +192,6 @@
  }
 
 
- .circle .pulsing-effect{
-    background-color: white;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    animation: pulse 1s infinite normal;
- }
-
- .triangle .pulsing-effect{
-    color: transparent;
-    width: 0;
-    height: 0;
-    border-right: 1rem solid transparent;
-    border-left: 1rem solid transparent;
-    border-bottom: 2rem solid white;
-    animation: pulse 1s infinite normal;
- }
-
- .square .pulsing-effect{
-    background-color: white;
-    width: 2rem;
-    height: 2rem;
-    animation: pulse 1s infinite normal;
- }
-
- .star .pulsing-effect{
-    background-image: url('./star.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    width: 12rem;
-    height: 12rem;
-    animation: pulse 1s infinite normal;
- }
-
- .diamond .pulsing-effect{
-    background-image: url('./diamond.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 12rem;
-    height: 12rem;
-    animation: pulse 1s infinite normal;
- }
-
-
 .circle .shaking-effect {
     background-color: white;
     width: 2rem;
@@ -310,20 +262,6 @@
     &:hover {
         transform: scale(1.1);
         cursor: pointer;
-    }
-}
-
-
-
-@keyframes pulse {
-    from {
-        transform: scale3d(1,1,1);
-    }
-    50% {
-        transform: scale3d(1.05, 1.05, 1.05);
-    }
-    to {
-        transform: scale3d(1,1,1);
     }
 }
 

@@ -2,9 +2,11 @@
 .block {
     background: white;
     margin-top: .5rem;
-    margin-right:auto;
-    margin-left:auto;
+    margin-right: auto;
+    margin-left: auto;
     display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     width: 4rem;
     height: 4rem;
@@ -14,6 +16,8 @@
 
     &:hover {
         cursor: pointer;
+        transform: scale(1.1);
+
     }
 
     &:focus {
