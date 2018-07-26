@@ -12,10 +12,10 @@
 
 %launch-status-item {
   display: inline-block;
-  background-size: 663px 246px;
+  background-size: 582px 216px;
   background-repeat: no-repeat;
   height: -webkit-fill-available;
-  height: 250px;
+  height: 220px;
   width: 213px;
 }
 
@@ -45,7 +45,7 @@
 }
 
 %contract {
-  background-position: -255px 3px;
+  background-position: -216px 3px;
 }
 
 .contract-loading {
@@ -61,7 +61,7 @@
 }
 
 %status {
-  background-position: -501px 3px;
+  background-position: -441px 3px;
 }
 
 .status-loading {
@@ -88,6 +88,6 @@
 .status-wrapper {
   width: 100%;
   position: absolute;
-  padding: 1rem 0;
+  padding: 2rem 0;
   z-index: 1;
 }
