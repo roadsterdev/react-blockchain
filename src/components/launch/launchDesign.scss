@@ -1,13 +1,12 @@
 @import './../styles/launchAnimation.scss';
 
-
-.star-shape-design {
-    animation: glitter 4.5s linear 0s infinite normal;
-    margin-left: 21rem;
-}
 .star-shape-image {
     width: 1rem;
-    height: 1rem;
+    position: absolute;
+    top: 2rem;
+    left: 21rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+   
 }
 
 .star-shape-two {
@@ -29,12 +28,17 @@
 }
 
 .square-shape-one {
-    margin-right: 16rem;
-    opacity:.8;
+    position: absolute;
+    top: 28rem;
+    left: 22rem;
+    opacity: .7;
 }
 
 .square-shape-two {
-    margin-right: -16rem;
+    position: absolute;
+    top: 7rem;
+    right: 1rem;
+    left: 18rem;
     width: 1rem;
     height: 1rem;
 }
@@ -65,7 +69,9 @@
 }
 
 .circle-shape-three {
-    margin-right: 20rem;
+    position: absolute;
+    top: 5rem;
+    left: 14rem;
     width: 1rem;
     height: 1rem;
 }
@@ -90,8 +96,8 @@
     width: 1.5rem;
     height: 1.5rem;
     position: absolute;
-    top: 12rem;
-    left: 15rem;
+    top: 18rem;
+    left: 12rem;
     right: 1rem;
 }
 
@@ -130,8 +136,8 @@
     width: 3rem;
     height: 3rem;
     position: absolute;
-    top: 6rem;
-    left: -1rem;
+    top: 20rem;
+    left: 17rem;
 }
 
 .circle-opaque {
@@ -185,18 +191,25 @@
 }
 
 .circle-shape-one {
-    margin-right: 8rem;
+    position: absolute;
+    top: 16rem;
+    left: 2rem;
 }
 
 .triangle-shape-one {
-    margin-left: -18rem;
-    width:1rem;
-    height:1rem;
+    position: absolute;
+    top: 13rem;
+    left: 17rem;
+    /* margin-left: -18rem; */
+    width: 1rem;
+    height: 1rem;
     animation: glitter 8s linear 0s infinite normal;
 }
 
 .triangle-shape-two {
-    margin-left: -17rem;
+    position: absolute;
+    top: 21rem;
+    left: 6rem;
     width: 3rem;
     height: 3rem;
     opacity: .7;
@@ -205,7 +218,6 @@
 
 .square-shape-five {
     opacity: .4;
-    margin-left: -3rem;
     width: 2rem;
     height: 2rem;
     position: absolute;
@@ -217,9 +229,43 @@
 .square-shape-four {
     width: 3rem;
     height: 3rem;
-    position:absolute;
-    top:32rem;
-    left:10rem;
+    position: absolute;
+    top: 28rem;
+    left: 3rem;
+
+}
+
+.square-orange-color {
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 12rem;
+    right: 20rem;
+}
+
+.triangle-pink-shape {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    right: 7rem;
+    top: 14rem;
+}
+
+.circle-white {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 2rem;
+    opacity: .7;
+    right: 20rem;
+}
+
+.square-green-two {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 29rem;
+    right: 16rem;
 }
 
 
