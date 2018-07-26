@@ -1,6 +1,245 @@
 @import './../styles/colors.scss';
 
 
+
+.circle {
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+ }
+
+ .triangle{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+ }
+
+
+ .square{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+ }
+
+ .star{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+ }
+
+ .diamond{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+ }
+
+.diamond .fade-effect{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+}
+
+.star .fade-effect{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+}
+
+.square .fade-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+ .triangle .fade-effect{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+ .circle .fade-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    animation: glitter 4.5s linear 0s infinite normal;
+ }
+
+
+.fade-effect {
+   animation: glitter 4.5s linear 0s infinite normal;
+}
+
+.flashing-effect{
+    animation: flash 10s infinite normal;
+
+}
+
+.shaking-effect{
+    animation: shake 5s infinite normal;
+}
+
+.wobbling-effect{
+    animation: wobble 10s infinite normal;
+}
+
+.circle .wobbling-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    animation: wobble 10s infinite normal;
+ }
+
+ .triangle .wobbling-effect{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+    animation: wobble 10s infinite normal;
+ }
+
+ .square .wobbling-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    animation: wobble 10s infinite normal;
+ }
+
+ .star .wobbling-effect{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: wobble 10s infinite normal;
+ }
+
+ .diamond .wobbling-effect{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+    animation: wobble 10s infinite normal;
+ }
+
+.circle .flashing-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    animation: flash 2s infinite normal; 
+ }
+
+ .triangle .flashing-effect {
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+    animation: flash 2s infinite normal;
+ }
+
+ .square .flashing-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    animation: flash 2s infinite normal;
+ }
+
+ .star .flashing-effect{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: flash 2s infinite normal;
+ }
+ .diamond .flashing-effect{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+    animation: flash 2s infinite normal;
+ }
+
+
+.circle .shaking-effect {
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    animation: shake 5s infinite normal;
+
+ }
+
+
+ .triangle .shaking-effect{
+    color: transparent;
+    width: 0;
+    height: 0;
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+    border-bottom: 2rem solid white;
+    animation: shake 5s infinite normal;
+ }
+
+ .square .shaking-effect{
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    animation: shake 5s infinite normal;
+ }
+
+ .star .shaking-effect{
+    background-image: url('./star.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 12rem;
+    height: 12rem;
+    animation: shake 5s infinite normal;
+ }
+
+ .diamond .shaking-effect{
+    background-image: url('./diamond.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 12rem;
+    height: 12rem;
+    animation: shake 5s infinite normal;
+ }
+
+
+
 *, 
 *::after,
 *::before {
@@ -27,6 +266,67 @@
 }
 
 
+@keyframes flash {
+    from,
+    50%,
+    to{
+        opacity: 1;
+    }
 
+    25%,
+    75%{
+        opacity: 0;
+    }
+}
 
+@keyframes shake {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
 
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(0, -5px, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(0, 5px, 0);
+    }
+}
+
+@keyframes wobble {
+    from {
+        transform: translate3d(0,0,0);
+    }
+
+    15% {
+        transform: translate3d(-20%, 0, 0) rotate3d(0,0,1, -5deg);
+    }
+
+    30% {
+        transform: translate3d(15%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    }
+    
+    45%{
+        transform: translate3d(-10%, 0,0) rotate3d(0,0,1, -3deg);
+    }
+
+    60%{
+        transform: translate3d(10%, 0, 0) rotate3d(0,0,1,2deg);
+    }
+
+    75%{
+        transform: translate3d(-5%, 0, 0) rotate3d(0,0,1, -1deg);
+    }
+
+    to {
+        transform: translate3d(0,0, 0);
+    }
+}

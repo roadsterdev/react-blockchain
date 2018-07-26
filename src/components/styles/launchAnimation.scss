@@ -15,34 +15,34 @@
 @include keyframes(launch) {
 
     0% {
-        background:linear-gradient(to bottom right, #51C2FA, #202CE0);
+        background-color:linear-gradient(to bottom right, #51C2FA, #202CE0);
     }
     5% {
-        background: #202CE0;
+        background-color: #202CE0;
     }
     10% {
-        background: linear-gradient(to top left, #202CE0, #51C2FA);
+        background-color: linear-gradient(to top left, #202CE0, #51C2FA);
     }
     15% {
-        background: #51C2FA;
+        background-color: #51C2FA;
     }
     25% {
-        background:linear-gradient(to bottom right, #51C2FA, #202CE0);
+        background-color:linear-gradient(to bottom right, #51C2FA, #202CE0);
     }
     30% {
-        background:  #202CE0;
+        background-color:  #202CE0;
     }
     35% {
-        background: linear-gradient(to top left, #202CE0, #51C2FA);
+        background-color: linear-gradient(to top left, #202CE0, #51C2FA);
     }
     40% {
-        background:  #51C2FA;
+        background-color:  #51C2FA;
     }
     45% {
-        background: linear-gradient(to bottom right, #51C2FA, #202CE0);
+        background-color: linear-gradient(to bottom right, #51C2FA, #202CE0);
     }
     50% {
-        background: #202CE0;
+        background-color: #202CE0;
     }
     55% {
         background:linear-gradient(to top left, #202CE0, #51C2FA);

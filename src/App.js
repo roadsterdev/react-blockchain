@@ -10,6 +10,7 @@ import { DragDropContext } from 'react-dnd';
 import ProposePopup from './components/modal/proposeTradePopUp';
 import Checkmark from './components/loader/Checkmark';
 import Dashboard from './components/dashboardPopUP/Dashboard';
+import Ledger from './components/ledgers/Ledger';
 
 const userGetKards = `/kards/user`;
 const joeGetKards = `/kards/joe`;
@@ -18,7 +19,6 @@ const getBalance = `/balance/user`; // joe balance should always be the same as 
 // History endpoints. /user vs /joe determines which node to talk to
 const userLedgerHistory = "/history/all/user";
 const joeLedgerHistory = "history/all/joe";
-
 
 class App extends Component {
     constructor(props) {
@@ -77,8 +77,11 @@ class App extends Component {
     formatLedger(ledger) {
         let formattedLedger = {};
         if (ledger && ledger.events) {
-            formattedLedger[ledger.joeAddress] = "Joe";
-            formattedLedger[ledger.userAddress] = "Me"; //TODO: determine Me vs You text
+            let addresses = {};
+            addresses[ledger.addresses.joeAddress] = "Joe";
+            addresses[ledger.addresses.userAddress] = "Me";
+
+            formattedLedger["addresses"] = addresses;
             formattedLedger.blocks = [];
             let indexCounter = -1;
             let currentBlockNumber = -1;
@@ -95,6 +98,11 @@ class App extends Component {
                 }
                 formattedLedger.blocks[indexCounter].push(element);
             });
+            let kaleidoInfo = {};
+            kaleidoInfo.consortia = this.props.location.state.consortia;
+            kaleidoInfo.environment = this.props.location.state.environment;
+            kaleidoInfo.locale = this.props.location.state.locale;
+            formattedLedger.kaleidoInfo = kaleidoInfo;
         }
 
         return formattedLedger;
@@ -191,9 +199,18 @@ class App extends Component {
               </div>
             </div>
             <div className="middle-white-container">
-                <div className="ether-left">{this.state.ether}</div>
-                <h3 className="ether-text"> Ξ </h3>
+                <div className="my-ledger">
+                    <Ledger ledger={this.state.myLedger}/>
+                </div>
 
+                <div className="the-ether-count">
+                <div className="ether-left">{this.state.ether}</div>
+                <h3 className="ether-text"> Ether </h3>
+                </div>
+
+                <div className="joe-ledger">
+                    <Ledger ledger={this.state.joeLedger}/>
+                </div>
             </div>
             <Checkmark/>
             <Footer refreshKards={this.refreshKards.bind(this)}/>

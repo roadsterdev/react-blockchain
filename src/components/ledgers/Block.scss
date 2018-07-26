@@ -1,0 +1,47 @@
+
+.block {
+    background: white;
+    margin-top: .5rem;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: .5rem;
+    color: #202CE0;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+
+    }
+
+    &:focus {
+        outline:none;
+    }
+}
+
+.block-text {
+    font-size: 1.5rem;
+    margin-top: 0rem;
+}
+
+.block-transaction {
+    width: 20rem;
+    height: 20rem;
+    background: #202CE0;
+    color: white;
+}
+
+.block-number-text {
+    color: #F99243;
+    font-size: .8rem;
+    margin-top: 0.4rem;
+    margin-right: auto;
+    margin-left:auto;
+
+}

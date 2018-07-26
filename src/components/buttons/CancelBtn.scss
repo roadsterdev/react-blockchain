@@ -1,0 +1,17 @@
+.cancel-button {
+    font-size: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    color: #202CE0;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline:none;
+    }
+}

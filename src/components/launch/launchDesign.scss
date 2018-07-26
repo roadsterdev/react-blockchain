@@ -20,6 +20,14 @@
     margin-right: 2rem;
 }
 
+.star-right {
+    animation: glitter 6s linear 0s infinite normal;
+      position: absolute;
+    top: 33rem;
+    right: 1rem;
+    left: 53rem;
+}
+
 .square-shape-one {
     margin-right: 16rem;
     opacity:.8;
@@ -29,6 +37,17 @@
     margin-right: -16rem;
     width: 1rem;
     height: 1rem;
+}
+
+.star-small-right {
+    width: 1rem;
+    height: 1rem;
+    animation: glitter 7s linear 0s infinite normal;
+    position: absolute;
+    top: 38rem;
+    left: 58rem;
+    right: 1rem;
+    
 }
 
 .square-shape-three {
@@ -58,12 +77,101 @@
     opacity: .4;
 }
 
+.star-blue {
+    width: 2rem;
+    height: 2rem;
+    position:absolute;
+    top: 30rem;
+    left:57rem;
+    right:1rem;
+}
+
+.star-blue-two {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 12rem;
+    left: 15rem;
+    right: 1rem;
+}
+
+.diamond-right-two{
+    width: 4rem;
+    height: 4rem;
+    position:absolute;
+    top: 5rem;
+    left: 70rem;
+    right: 1rem;
+}
+
+.diamond-right-three{
+    width: 6rem;
+    height: 6rem;
+    position: absolute;
+    top: 25rem;
+    left: 74rem;
+    right: 1rem;
+    animation: glitter 10s linear 0s infinite normal;
+}
+
+.circle-shape-right {
+    position: absolute;
+    top: 2rem;
+    left: 77rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    opacity: .5;
+    animation:  glitter 10s linear 0s infinite normal;
+
+}
+
 .square-pink {
     width: 3rem;
     height: 3rem;
     position: absolute;
     top: 6rem;
-    left: 8rem;
+    left: -1rem;
+}
+
+.circle-opaque {
+    position: absolute;
+    top: 4rem;
+    left: 47rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    opacity: .4;
+}
+
+.circle-green {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 7rem;
+    left: 57rem;
+    right: 1rem;
+}
+
+.circle-green-small {
+    position: absolute;
+    top: 16rem;
+    left: 70rem;
+    right:1rem;
+}
+
+.diamond-right {
+    position: absolute;
+    top: 20rem;
+    left: 61rem;
+    right:2rem;
+    animation: glitter 10s linear 0s infinite normal;
+}
+
+.small {
+    width: 2rem;
+    height:2rem;
+    animation: glitter 10s linear 0s infinite normal;
 }
 
 .circle-shape-two {
@@ -97,12 +205,13 @@
 
 .square-shape-five {
     opacity: .4;
-    margin-left:-3rem;
-    width:2rem;
-    height:2rem;
+    margin-left: -3rem;
+    width: 2rem;
+    height: 2rem;
     position: absolute;
-    top: 40rem;
-    left: 12rem;
+    top: 35rem;
+    left: 7rem;
+    right: 1rem;
 }
 
 .square-shape-four {
