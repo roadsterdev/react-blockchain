@@ -41,7 +41,7 @@ class Card extends Component {
 
         const color= ["#202CE0", "#F99243", "#51C2FA", "#EE34A8", "#00CD79"];
         const shapes = ['circle','square','diamond','triangle','star'];
-        const effects = ['fade-effect', 'flashing-effect','shaking-effect', 'wobbling-effect'];
+        const effects = ['','fade-effect', 'flashing-effect','shaking-effect', 'wobbling-effect'];
 
 
 
