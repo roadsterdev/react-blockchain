@@ -9,8 +9,8 @@
 	background-color:transparent;
 	height: 100vh;
     display: flex;
-    margin-right: auto;
-    margin-left: auto;
+    // margin-right: auto;
+    // margin-left: auto;
 }
 
 .background-wrapper-image {
@@ -28,16 +28,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    // padding: 2rem;
 }
 
 
 // Launch Form +++++++++++++++++++++++++++++++++
 
 .launch-button-form {
-	position: relative;
-	width: 30rem;
-	height: 4rem;
+    position: absolute;
+    top: 17.5rem;
+    right: 2rem;
+    left: 25rem;
+    width: 30rem;
+    height: 4rem;
 }
 
 .api-key {
@@ -50,7 +53,7 @@
     border-radius: 4px;
     background: white;
     outline: 0;
-    padding: 2em 1em 1em 1em;
+    padding: 1em 1em 1em 1em;
     color: $color-1;
     transition: background 0.35s ease-out;
     border-radius: 4rem;

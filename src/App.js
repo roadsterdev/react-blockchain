@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from './components/header/Header';
 import './components/card/Card.scss';
 import './components/styles/text.scss';
 import './App.scss';
@@ -11,10 +10,15 @@ import { DragDropContext } from 'react-dnd';
 import ProposePopup from './components/modal/proposeTradePopUp';
 import Checkmark from './components/loader/Checkmark';
 import Dashboard from './components/dashboardPopUP/Dashboard';
+import Ledger from './components/ledgers/Ledger';
 
 const userGetKards = `/kards/user`;
 const joeGetKards = `/kards/joe`;
 const getBalance = `/balance/user`; // joe balance should always be the same as the user's
+
+// History endpoints. /user vs /joe determines which node to talk to
+const userLedgerHistory = "/history/all/user";
+const joeLedgerHistory = "history/all/joe";
 
 class App extends Component {
     constructor(props) {
@@ -25,7 +29,9 @@ class App extends Component {
             myProposedCard: [],
             joeProposedCard:[],
             ether: '',
-            visible: true
+            visible: true,
+            myLedger: {},
+            joeLedger: {},
         };
         this.refreshKards();
     }
@@ -67,6 +73,65 @@ class App extends Component {
 
     }
 
+    // Formats the ledger event data into a more usable format
+    formatLedger(ledger) {
+        let formattedLedger = {};
+        if (ledger && ledger.events) {
+            let addresses = {};
+            addresses[ledger.addresses.joeAddress] = "Joe";
+            addresses[ledger.addresses.userAddress] = "Me";
+
+            formattedLedger["addresses"] = addresses;
+            formattedLedger.blocks = [];
+            let indexCounter = -1;
+            let currentBlockNumber = -1;
+            ledger.events.forEach((element) => {
+                if (element.blockNumber !== currentBlockNumber) {
+                    currentBlockNumber = element.blockNumber;
+                    indexCounter++;
+                }
+                // For each returned event, we want to sort them by block number
+                // If this is the first event in this block, let create a new array
+                // otherwise just push the event into the array
+                if (!formattedLedger.blocks[indexCounter]) {
+                    formattedLedger.blocks[indexCounter] = [];
+                }
+                formattedLedger.blocks[indexCounter].push(element);
+            });
+            let kaleidoInfo = {};
+            kaleidoInfo.consortia = this.props.location.state.consortia;
+            kaleidoInfo.environment = this.props.location.state.environment;
+            kaleidoInfo.locale = this.props.location.state.locale;
+            formattedLedger.kaleidoInfo = kaleidoInfo;
+        }
+
+        return formattedLedger;
+    }
+
+    refreshLedgers() {
+        window.fetch( userLedgerHistory, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(results => {
+            return results.json();
+        }).then(resultBody => {
+            this.setState({myLedger: this.formatLedger(resultBody)});
+        });
+
+        window.fetch( joeLedgerHistory, {
+            method: "GET",
+            headers: {
+                'content-type': 'application/json'
+            }
+        }).then(results => {
+            return results.json();
+        }).then(resultBody => {
+            this.setState({joeLedger: this.formatLedger(resultBody)});
+        });
+    }
+
     refreshKards() {
         window.fetch( userGetKards, {
             method: "GET",
@@ -77,6 +142,7 @@ class App extends Component {
             return results.json();
         }).then(resultBody => {
             this.setState({myKards: resultBody});
+            this.refreshLedgers();
         });
 
         window.fetch( joeGetKards, {
@@ -88,6 +154,7 @@ class App extends Component {
             return results.json();
         }).then(resultBody => {
             this.setState({joeKards: resultBody});
+            this.refreshLedgers()
         });
 
         window.fetch( getBalance, {
@@ -112,7 +179,6 @@ class App extends Component {
           <div>
             <Dashboard  visible={this.state.visible} click={this.clickOut.bind(this)}/>
             <div>
-            <Header etherAmount={this.state.ether}/>
               <div className="square-container">
                 <div className="my-cards">
                     <h2>My Cards</h2>
@@ -123,7 +189,7 @@ class App extends Component {
                     <ProposePopup 
                         myKards={this.state.myProposedCard} joeKards={this.state.joeProposedCard} refresh={this.refreshKards.bind(this)}
                         empty={this.emptyTradeCards.bind(this)}
-                        smartContractAddress={this.props.location.state.ContractAddress}
+                        smartContractAddress={this.props.location.state.contractAddress}
                     />
                 </div>
                   <div className="other-players-cards">
@@ -131,6 +197,20 @@ class App extends Component {
                   <TradingContainer moredata={this.state.joeKards} trade={(card) => this.collectCards(card)}/>
                 </div>
               </div>
+            </div>
+            <div className="middle-white-container">
+                <div className="my-ledger">
+                    <Ledger ledger={this.state.myLedger}/>
+                </div>
+
+                <div className="the-ether-count">
+                <div className="ether-left">{this.state.ether}</div>
+                <h3 className="ether-text"> Ether </h3>
+                </div>
+
+                <div className="joe-ledger">
+                    <Ledger ledger={this.state.joeLedger}/>
+                </div>
             </div>
             <Checkmark/>
             <Footer refreshKards={this.refreshKards.bind(this)}/>
