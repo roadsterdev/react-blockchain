@@ -101,14 +101,22 @@ class Controller {
         }
 
         try {
-            let response = await this.kaleidoConfigInstance.getJWTToken(apiKey);
-            let parsedResponse = JSON.parse(response);
+            let tokenResponse = await this.kaleidoConfigInstance.getJWTToken(apiKey);
+            let parsedResponse = JSON.parse(tokenResponse);
             if (parsedResponse && parsedResponse.token) {
                 this.kaleidoConfigInstance.token = parsedResponse.token;
             }
+            let canCreateConsortia = await this.kaleidoConfigInstance.checkConsortiaLimit();
+            if (!canCreateConsortia) {
+                response.status = 400;
+                response.body.error = "You are at the limit of Consortia for your Kaleido plan. Please delete one if you would like to use this Sample App.";
+                return response;
+            }
+
         } catch (error) {
             console.log(error);
-            response.body.error = JSON.stringify(error);
+            let parsedError = JSON.parse(error.error);
+            response.body.error = parsedError.errorMessage;
             return response;
         }
 
