@@ -163,12 +163,46 @@ class kaleidoConfig {
     // Internally, we swap the API key for a JWT token and this
     // can cause longer wait times if every call uses an API key instead of a JWT token
     // Returns a promise object containing a JWT token good for an hour
-    getJWTToken(apiKey){
+    getJWTToken(apiKey) {
         let headers = {"Authorization":"Bearer " + apiKey, "Content-Type":"application/json"};
         let body = JSON.stringify({apikey: apiKey});
         let uri = this.baseUrl + "/authtoken";
         let options = {method: 'POST', uri: uri, headers: headers, body: body};
         return request(options);
+    }
+
+    // Returns a promise object containing true if under consortia limit for the user's plan
+    // false if at/over consortia limit for the user's plan
+    checkConsortiaLimit() {
+        let headers = {"Authorization":"Bearer " + this.token, "Content-Type":"application/json"};
+        let uri = this.baseUrl + "/consortia";
+        let options = {method: 'GET', uri: uri, headers: headers};
+        return request(options).then((response) => {
+            let consortia = JSON.parse(response);
+            let consortiaNum = consortia.length;
+            // check if we have less than the default plan
+            if (consortiaNum < 2) {
+                return true;
+            }
+
+            // else we need to see how many we can have
+            let uri = this.baseUrl + "/orgs";
+            let options = {method: 'GET', uri: uri, headers: headers};
+            return request(options).then((response) => {
+               let parsedResponse = JSON.parse(response);
+               let plan = parsedResponse[0].plan;
+               uri = this.baseUrl + "/plans/" + plan;
+               options = {method: 'GET', uri: uri, headers: headers};
+               return request(options).then((response) => {
+                   let parsedResponse = JSON.parse(response);
+                   let consortiaLimit = parsedResponse.limits.consortia.per.org;
+
+                   return consortiaNum < consortiaLimit;
+               });
+            });
+        })
+
+
     }
 
     // Creates a new Consortium on Kaleido
