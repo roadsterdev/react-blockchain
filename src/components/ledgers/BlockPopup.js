@@ -43,7 +43,7 @@ class BlockPopup extends Component {
         let headerText = "Block #" + blockNumber;
         let kaleidoInfo = this.props.kaleidoInfo;
         let explorerLink = ".kaleido.io/block/" + blockNumber + "?consortia=" + kaleidoInfo.consortia + "&environment=" + kaleidoInfo.environment;
-        let prefix = "https://explorer" + (kaleidoInfo.locale ? "-" + kaleidoInfo.locale : "");
+        let prefix = "https://explorer" + (kaleidoInfo.locale ? kaleidoInfo.locale : "");
         explorerLink = prefix + explorerLink;
         if(this.props.visible) {
         return(

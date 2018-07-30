@@ -87,10 +87,10 @@ class Controller {
             });
         }
 
-        apiKey = apiKey.trim();
+        if (apiKey) apiKey = apiKey.trim();
         if (!apiKey && !this.previousInstance) {
             response.status = 400;
-            response.body.error = "No Api Key in body";
+            response.body.error = "No Previous Instance and/or No Api Key in body";
             return response;
         }
         // If locale is specified then add a dash for the base url and reassign it
