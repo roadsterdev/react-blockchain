@@ -155,7 +155,6 @@ class KaleidoKards {
 
     }
 
-    // TODO: use getAddress function here and for platinum instead of get accounts directly
     // Calls buyStandardPack function on solidity contract
     // Returns a tx receipt of the purchase
     buyStandardPack(node) {
@@ -164,9 +163,9 @@ class KaleidoKards {
         return config.then( response => {
             let web3 = response[0];
             let contract = response[1];
-            return web3.eth.getAccounts().then(accounts => {
+            return this.getAddress(node).then(address => {
                 return contract.methods.buyStandardPack().send({
-                    from: accounts[0],
+                    from: address,
                     gas: this.targetGasLimit,
                     value: web3.utils.toWei(this.standardPackCost, 'ether')
                 })
@@ -181,9 +180,9 @@ class KaleidoKards {
         return config.then( response => {
             let web3 = response[0];
             let contract = response[1];
-            return web3.eth.getAccounts().then(accounts => {
+            return this.getAddress(node).then(address => {
                 return contract.methods.buyPlatinumPack().send({
-                    from: accounts[0],
+                    from: address,
                     gas: this.targetGasLimit,
                     value: web3.utils.toWei(this.platinumPackCost, 'ether')
                 })
