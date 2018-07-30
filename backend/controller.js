@@ -87,7 +87,7 @@ class Controller {
             });
         }
 
-        if (apiKey) apiKey = apiKey.trim;
+        if (apiKey) apiKey = apiKey.trim();
         if (!apiKey && !this.previousInstance) {
             response.status = 400;
             response.body.error = "No Previous Instance and/or No Api Key in body";
