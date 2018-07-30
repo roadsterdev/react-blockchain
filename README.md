@@ -58,7 +58,7 @@ The app is served at `localhost:3000`.  If you are running the app for the first
 * **UI**:  Log into the Kaleido console and navigate to the KaleidoKards consortium.  Click the dropdown for the KaleidoKards environment and select `Wake Environment`.  The alternative approach via the UI, is to hover over the grayed-out pause icon on the far left of the environment row.  This will reveal a play icon which you can click to restart the environment.
 * **API**: Please refer to the [API 101](https://console.kaleido.io/docs/docs/api101/) tutorial for proper usage of the Kaleido API.  Once you have properly configured your content and authorization headers, as well as your `$APIKEY` and `$APIURL` environment variables, you can send a PATCH to the targeted environment and change the state.  For example:
 
-`curl -X PATCH -d '{"state":"live"}' -H "$HDR_AUTH" -H "$HDR_CT" "$APIURL/consortia/{consortia_id}/environments/{environment_id}"`
+`curl -X PATCH -d '{"state":"live"}' -H "$HDR_AUTH" -H "$HDR_CT" \ "$APIURL/consortia/{consortia_id}/environments/{environment_id}"`
 
 If you want a brand new instance of the application or if you have deleted one or more of the existing resources and rendered the original application inaccessible, you will need to remove the hidden keystore file prior to launching the new instance.  From the root of your directory, remove the hidden `.data` directory:
 
