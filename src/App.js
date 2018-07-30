@@ -18,7 +18,7 @@ const getBalance = `/balance/user`; // joe balance should always be the same as 
 
 // History endpoints. /user vs /joe determines which node to talk to
 const userLedgerHistory = "/history/all/user";
-const joeLedgerHistory = "history/all/joe";
+const joeLedgerHistory = "/history/all/joe";
 
 class App extends Component {
     constructor(props) {
@@ -32,8 +32,35 @@ class App extends Component {
             visible: true,
             myLedger: {},
             joeLedger: {},
+            consortia: "",
+            environment: "",
+            locale: "",
+            contractAddress: "",
         };
-        this.refreshKards();
+        this.getLaunchData();
+    }
+
+    getLaunchData() {
+        window.fetch("/launch", {
+            method: "GET"
+        }).then((results) => {
+            if (!results.ok) {
+                console.log("Error while getting backend data");
+                console.log(results);
+            }
+            return results.json();
+        }).then((response) => {
+            if (response.error) {
+                alert(response.error);
+                return;
+            }
+            this.setState({consortia: response.consortia,
+            environment: response.environment,
+            locale: response.locale,
+            contractAddress: response.contractAddress});
+
+            this.refreshKards();
+        });
     }
 
     collectCards(card) {
@@ -99,9 +126,9 @@ class App extends Component {
                 formattedLedger.blocks[indexCounter].push(element);
             });
             let kaleidoInfo = {};
-            kaleidoInfo.consortia = this.props.location.state.consortia;
-            kaleidoInfo.environment = this.props.location.state.environment;
-            kaleidoInfo.locale = this.props.location.state.locale;
+            kaleidoInfo.consortia = this.state.consortia;
+            kaleidoInfo.environment = this.state.environment;
+            kaleidoInfo.locale = this.state.locale;
             formattedLedger.kaleidoInfo = kaleidoInfo;
         }
 
@@ -189,7 +216,7 @@ class App extends Component {
                     <ProposePopup 
                         myKards={this.state.myProposedCard} joeKards={this.state.joeProposedCard} refresh={this.refreshKards.bind(this)}
                         empty={this.emptyTradeCards.bind(this)}
-                        smartContractAddress={this.props.location.state.contractAddress}
+                        smartContractAddress={this.state.contractAddress}
                     />
                 </div>
                   <div className="other-players-cards">
