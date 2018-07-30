@@ -52,7 +52,7 @@ Change into the directory and install the node modules at the root of the projec
 
 Launch the application:
 
-`nmp start`
+`npm start`
 
 The app is served at `localhost:3000`.  If you are running the app for the first time, simply input a valid API Key into the console and click **Launch**.  If you are re-running the application, ensure that the auto-provisioned resources (consortia, memberships, environment, nodes and application credentials) are still present in your Kaleido Organization.  The application retains knowledge of these resource details via a hidden `.data` directory at the root of the project (more on this in the next section).  Note that Kaleido environments are configured to quiesce after 24 hours of inactivity.  As a result, you should log into the Kaleido console and ensure that your environment is active prior to reusing an older instance of the application.  There are two approaches for reviving an environment - UI or API:
 * **UI**:  Log into the Kaleido console and navigate to the KaleidoKards consortium.  Click the dropdown for the KaleidoKards environment and select `Wake Environment`.  The alternative approach via the UI, is to hover over the grayed-out pause icon on the far left of the environment row.  This will reveal a play icon which you can click to restart the environment.
