@@ -54,25 +54,24 @@ class kaleidoConfig {
         this.headers = {"Authorization":"Bearer " + this.token, "Content-Type":"application/json"};
         console.log("Creating Consortia");
         return this.createConsortia().then((response) => {
-        let jsonResponse = JSON.parse(response);
-        let consortia = jsonResponse._id;
-        this.consortiaId = consortia;
-        console.log("Created consortium with ID: " + consortia);
-        console.log("Creating Environment");
-        return this.createEnvironment(consortia).then((response) => {
             let jsonResponse = JSON.parse(response);
-            let environment = jsonResponse._id;
-            this.environmentId = environment;
-            console.log("Created environment with ID: " + environment);
-            console.log("Creating Memberships");
-            // Create the 3 memberships at once
-            return Promise.all([
-                this.createMembership(consortia, this.memberUser),
-                this.createMembership(consortia, this.memberJoe),
-                this.createMembership(consortia, this.memberStore)])
-                .then((response) => {
+            let consortia = jsonResponse._id;
+            this.consortiaId = consortia;
+            console.log("Created consortium with ID: " + consortia);
+            console.log("Creating Environment");
+            return this.createEnvironment(consortia).then((response) => {
+                let jsonResponse = JSON.parse(response);
+                let environment = jsonResponse._id;
+                this.environmentId = environment;
+                console.log("Created environment with ID: " + environment);
+                console.log("Creating Memberships");
+                // Create the 3 memberships at once
+                let createAllMemberships = Promise.all([
+                    this.createMembership(consortia, this.memberUser),
+                    this.createMembership(consortia, this.memberJoe),
+                    this.createMembership(consortia, this.memberStore)]);
+                return createAllMemberships.then((response) => {
                     // Promise.all returns the responses for each call in an array
-                    // console.log(response);
                     let userResponse  = JSON.parse(response[0]);
                     let joeResponse   = JSON.parse(response[1]);
                     let storeResponse = JSON.parse(response[2]);
@@ -83,77 +82,77 @@ class kaleidoConfig {
                     console.log("Created all memberships");
                     console.log("Creating nodes");
                     // Create the 3 nodes at once
-                    return Promise.all([
+                    let createAllNodes = Promise.all([
                         this.createNode(consortia, environment, userMember, this.nodeUser),
                         this.createNode(consortia, environment, joeMember, this.nodeJoe),
-                        this.createNode(consortia, environment, storeMember, this.nodeStore)])
-                        .then((response) => {
-                            let userResponse  = JSON.parse(response[0]);
-                            let joeResponse   = JSON.parse(response[1]);
-                            let storeResponse = JSON.parse(response[2]);
+                        this.createNode(consortia, environment, storeMember, this.nodeStore)]);
+                    return createAllNodes.then((response) => {
+                        let userResponse  = JSON.parse(response[0]);
+                        let joeResponse   = JSON.parse(response[1]);
+                        let storeResponse = JSON.parse(response[2]);
 
-                            //Wait on all the nodes to be initialized then get their status
-                            return Promise.all([
-                                this.waitForNodeInitialization(consortia, environment, userResponse._id),
-                                this.waitForNodeInitialization(consortia, environment, joeResponse._id),
-                                this.waitForNodeInitialization(consortia, environment, storeResponse._id)])
-                                .then((response) => {
-                                    let userNodeStatus  = response[0];
-                                    let joeNodeStatus   = response[1];
-                                    let storeNodeStatus = response[2];
+                        //Wait on all the nodes to be initialized then get their status
+                        let waitForAllNodes = Promise.all([
+                            this.waitForNodeInitialization(consortia, environment, userResponse._id),
+                            this.waitForNodeInitialization(consortia, environment, joeResponse._id),
+                            this.waitForNodeInitialization(consortia, environment, storeResponse._id)]);
+                        return waitForAllNodes.then((response) => {
+                            let userNodeStatus  = response[0];
+                            let joeNodeStatus   = response[1];
+                            let storeNodeStatus = response[2];
 
-                                    // Get the urls to communicate with the nodes
-                                    this.userNodeUrls  = userNodeStatus.urls;
-                                    this.joeNodeUrls   = joeNodeStatus.urls;
-                                    this.storeNodeUrls = storeNodeStatus.urls;
-                                    console.log("Created and Initialized Nodes");
-                                    console.log("Generating app credentials");
-                                    return Promise.all([
-                                        this.generateAppCredentials(consortia, environment, userMember),
-                                        this.generateAppCredentials(consortia, environment, joeMember),
-                                        this.generateAppCredentials(consortia, environment, storeMember)])
-                                        .then((response) => {
-                                            let userNodeStatus  = JSON.parse(response[0]);
-                                            let joeNodeStatus   = JSON.parse(response[1]);
-                                            let storeNodeStatus = JSON.parse(response[2]);
+                            // Get the urls to communicate with the nodes
+                            this.userNodeUrls  = userNodeStatus.urls;
+                            this.joeNodeUrls   = joeNodeStatus.urls;
+                            this.storeNodeUrls = storeNodeStatus.urls;
+                            console.log("Created and Initialized Nodes");
+                            console.log("Generating app credentials");
+                            let createAllAppCreds = Promise.all([
+                                this.generateAppCredentials(consortia, environment, userMember),
+                                this.generateAppCredentials(consortia, environment, joeMember),
+                                this.generateAppCredentials(consortia, environment, storeMember)])
+                            return createAllAppCreds.then((response) => {
+                                let userNodeStatus  = JSON.parse(response[0]);
+                                let joeNodeStatus   = JSON.parse(response[1]);
+                                let storeNodeStatus = JSON.parse(response[2]);
 
-                                            this.userNodeUser = userNodeStatus.username;
-                                            this.userNodePass = userNodeStatus.password;
+                                this.userNodeUser = userNodeStatus.username;
+                                this.userNodePass = userNodeStatus.password;
 
-                                            this.joeNodeUser = joeNodeStatus.username;
-                                            this.joeNodePass = joeNodeStatus.password;
+                                this.joeNodeUser = joeNodeStatus.username;
+                                this.joeNodePass = joeNodeStatus.password;
 
-                                            this.storeNodeUser = storeNodeStatus.username;
-                                            this.storeNodePass = storeNodeStatus.password;
-                                            console.log("App Credentials generated");
-                                            console.log("Getting Node account addresses for funding");
+                                this.storeNodeUser = storeNodeStatus.username;
+                                this.storeNodePass = storeNodeStatus.password;
+                                console.log("App Credentials generated");
+                                console.log("Getting Node account addresses for funding");
 
-                                            return Promise.all([
-                                                this.getNodeStatus(consortia, environment, userResponse._id),
-                                                this.getNodeStatus(consortia, environment, joeResponse._id)
-                                            ]).then((response) => {
-                                                userNodeStatus = JSON.parse(response[0]);
-                                                joeNodeStatus = JSON.parse(response[1]);
+                                let getAllNodeStatuses = Promise.all([
+                                    this.getNodeStatus(consortia, environment, userResponse._id),
+                                    this.getNodeStatus(consortia, environment, joeResponse._id)]);
+                                return getAllNodeStatuses.then((response) => {
+                                    userNodeStatus = JSON.parse(response[0]);
+                                    joeNodeStatus = JSON.parse(response[1]);
 
-                                                let userAddress = userNodeStatus.user_accounts[0];
-                                                let joeAddress = joeNodeStatus.user_accounts[0];
-                                                console.log("Received account addresses");
-                                                console.log("Funding accounts");
-                                                return Promise.all([
-                                                    this.fundAccount(consortia, environment, userAddress),
-                                                    this.fundAccount(consortia, environment, joeAddress)])
-                                                    .then((receipts) => {
-                                                        // receipts is the transaction receipts from funding the accounts
-                                                        console.log("Accounts funded, Writing keyfile");
-                                                        // Finally, we have everything created and all the creds we need to make some magic
-                                                        // So lets write them to a file for later use
-                                                        this.writeKeyFile();
-                                                        return this;
-                                                    })
-                                            });
-                                        });
+                                    let userAddress = userNodeStatus.user_accounts[0];
+                                    let joeAddress = joeNodeStatus.user_accounts[0];
+                                    console.log("Received account addresses");
+                                    console.log("Funding accounts");
+                                    let fundAccounts = Promise.all([
+                                        this.fundAccount(consortia, environment, userAddress),
+                                        this.fundAccount(consortia, environment, joeAddress)]);
+                                    return fundAccounts.then((receipts) => {
+                                        // receipts is the transaction receipts from funding the accounts
+                                        console.log("Accounts funded, Writing keyfile");
+                                        // Finally, we have everything created and all the creds we need to make some magic
+                                        // So lets write them to a file for later use
+                                        this.writeKeyFile();
+                                        return this;
+                                    })
                                 });
+                            });
                         });
+                    });
                 });
             });
         });
