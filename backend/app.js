@@ -21,6 +21,14 @@ app.post('/launch', (req, res) => {
     });
 });
 
+// POST call with apiKey in body and optional locale specified [eu, ap, ko] (Defaults to US)
+app.get('/launch', (req, res) => {
+    // Same as post call except used for /app endpoint for getting/initializing the backend data
+    controller.startLaunch().then((response) => {
+        res.status(response.status).send(response.body);
+    });
+});
+
 app.get('/launch/status', (req, res) => {
     // TODO: make new controller function for getting status
     let response = controller.getLaunchStatus();
