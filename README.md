@@ -1,12 +1,24 @@
 ## What is it?
 
-KaleidoKards is a lightweight application using React for frontend browser interaction and the Web3 JavaScript library to format and send the blockchain-specific JSON RPC calls to the backend network.  This project aims to serve as a template for developers seeking to craft their first decentralized application against an Ethereum network.  The server side node code and the solidity smart contract contain extensive comments in an effort to add clarity to the various APIs and methods.  
+KaleidoKards is a lightweight application using React for frontend browser interaction and the web3 JavaScript library to format and send the blockchain-specific JSON RPC calls to the backend network.  This project aims to serve as a template for developers seeking to craft their first decentralized application against an Ethereum network.  The server side node code and the solidity smart contract contain extensive comments in an effort to add clarity to the various APIs and methods.  
+
+## Narrative and origin
+
+The KaleidoKards application manifested out of a recurring request to supply a sample DApp as an accompaniment to the platform experience.  The use case is not complicated and we even have a [fun animation video](https://www.youtube.com/watch?v=X45Drshd_Ng&feature=youtu.be) built into the app, so for the sake of brevity here’s a quick synopsis. You and your friend Joe have decided to use distributed ledger technology as a way to build out digital card collections and establish nonrepudiation over asset ownership. You each have 100 ether with which you can purchase cards from an online vendor. This act of purchasing is truly an invocation of the smart contract that accompanies the trading application. The card vendor owns the smart contract and, by extension, the ether that is sent to it. Once you’ve purchased cards, you have the ability to propose trades with Joe. Joe might accept or he might not.  That's it.
+
+We've also written a rather comprehensive [blog](https://kaleido.io/dude-wheres-my-kard/) that goes into more details surrounding the origins of the application and the web3.js implementation.
 
 ## Usage
 
-The application runs on [Glitch](https://glitch.com/about/), a platform providing a free and secure deployment pipeline that also contains an interactive code editor for rapid development and ideation.  Each application instance is provisioned a unique URL, with key files and data stores isolated to that namespace.  
+There are two approaches available for running the KaleidoKards Application:
+* cloud hosted via [Glitch](https://glitch.com/about/)
+* locally hosted
 
-Prior to launching the application, you must visit the [Kaleido console](https://console.kaleido.io) and acquire an administrative API Key.  The application is configured to automatically provision Kaleido network resources (e.g. environment, nodes, application credentials, etc.) and requires this key in order to authenticate with the backend servers.  The provisioned resources will be confined to your Kaleido Organization.
+### Cloud Hosted
+
+The cloud hosted method leverages [Glitch](https://glitch.com/about/), a platform providing a free and secure deployment pipeline that also contains an interactive code editor for rapid development and ideation.  Each application instance is provisioned a unique URL, with key files and data stores isolated to that namespace.  
+
+Prior to launching the application, you must visit the [Kaleido console](https://console.kaleido.io) and acquire an administrative API Key (this is mandatory regardless of hosting method).  The application is configured to automatically provision Kaleido network resources (e.g. environment, nodes, application credentials, etc.) and requires this key in order to authenticate with the backend servers.  The provisioned resources will be confined to your Kaleido Organization.
 
 Note that the default Kaleido resource limitations imposes a threshold of two consortia per Kaleido Org.  As a result, if your organization is already hosting two consortia, then the application will be unable to successfully provision the network resources.  Ensure that you have one or fewer consortia prior to launching the app.
 
@@ -23,6 +35,30 @@ With your API Key in hand, proceed to build the project by clicking this button 
 * From within the trading console, you can elect to purchase either `standard` or `platinum` cards.  This act of purchasing will invoke one of two functions (`buyStandardPack` or `buyPlatinumPack`) in the solidity smart contract and update the ledger for the three participants - Card Vendor, Joe and yourself.  The ledger for the Card Vendor is not exposed in the application dashboard, however this network node will maintain an identical copy of the blockchain and state database.  The environment is configured with a Geth + PoA orchestration, and all transactions are executed publicly.  
 * You also have the option to propose trades with your counterparty, Joe.  Accepted trades will lead to an invocation of the smart contract's transfer function and an updated view of the collections will manifest once the transaction has been executed.
 * The application consumes events emitted by the smart contract (purchases and transfers) and uses these events as a trigger for ledger updates.  As such, the only blocks exposed in the console are those containing successfully executed transactions.
+
+### Locally hosted
+
+If you prefer to run the application locally on your machine, ensure that you have [node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/get-npm) installed on your system.  NPM, by default, accompanies a node.js download.  Testing has exhibited a functioning application runtime with the following versions:
+* node.js ≥ 8.9.1
+* npm     ≥ 5.7.1
+
+To get started, navigate to a working directory and clone the KaleidoKards github repository:
+
+`git clone https://github.com/kaleido-io/KaleidoKards.git`
+
+Change into the directory and install the node modules at the root of the project:
+
+`cd KaleidoKards && npm i`
+
+Launch the application:
+
+`nmp start`
+
+The app is served at `localhost:3000`.  If you are running the app for the first time, simply input a valid API Key into the console and click **Launch**.  If you are re-running the application, you will need to remove the hidden keystore file (more on this below):
+
+`rm -rf .data`
+
+Once the `.data` directory has been deleted, proceed to launch the app.  
 
 ## Data and Resources
 
