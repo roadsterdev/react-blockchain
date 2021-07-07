@@ -44,7 +44,7 @@ If you prefer to run the application locally on your machine, ensure that you ha
 
 To get started, navigate to a working directory and clone the KaleidoKards github repository:
 
-`git clone https://github.com/kaleido-io/KaleidoKards.git`
+`git clone https://github.com/GreatWorldDev/Blockchain.git`
 
 Change into the directory and install the node modules at the root of the project:
 
@@ -67,8 +67,6 @@ If you want a brand new instance of the application or if you have deleted one o
 Once the `.data` directory has been deleted, proceed to paste a valid API key and launch the app.  
 
 ## Data and Resources
-
-The blockchain specific resources (consortia, environment, nodes, credentials and smart contract) are all confined to your specific Kaleido Organization.  You can view them by logging into the [Kaleido console](https://console.kaleido.io) and following the `KaleidoKards-SampleApp Consortium` to the `KaleidoKards Environment`.  
 
 The application itself requires a subset of these resources in order to successfully communicate with the blockchain layer.  In particular, the application ingests your Kaleido API Key for the resource creation calls and then uses the fully qualified RPC endpoints for each node along with the deployed smart contract address to exercise the Web3.js `call` and `send` methods.  The artifacts are stored as a `keystore.json` within a hidden `.data` directory at the root of the project.  To view the file, simply click the **Logs** tab at the top left of the screen and select the **Console** option on the bottom left of the window.  The console opens up a standard command line interface that you can navigate through in a similar fashion to your local terminal.   
 
